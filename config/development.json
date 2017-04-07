@@ -1,0 +1,37 @@
+{
+  "img_url": "http://192.168.1.251:3911",
+  "es_url": "http://192.168.1.101:30012",
+  "permissionUrl": "http://192.168.1.251:42000",
+  "dataBase": {
+    "ctcDb": {
+      "database": "ctcdb_delivery_test",
+      "host": "192.168.1.101",
+      "username": "root",
+      "password": "123456",
+      "dialect": "mysql",
+      "isolationLevel": "READ COMMITTED",
+      "pool": {
+        "max": 60,
+        "min": 5,
+        "idle": 60000,
+        "maxConnections": 100,
+        "minConnections": 5,
+        "maxIdleTime": 60000
+      },
+      "timezone": "+08:00"
+    },
+    "statisticsDb": {
+      "database": "statistics_db_dev",
+      "host": "192.168.1.101",
+      "username": "root",
+      "password": "123456",
+      "dialect": "mysql"
+    }
+  },
+  "numCPUs": 1,
+  "redis": {
+    "host": "192.168.1.101",
+    "port": 6379,
+    "db": 6
+  }
+}

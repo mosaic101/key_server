@@ -1,0 +1,20 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+#IDE tmp
+.vscode
+
+# Dependency directory
+node_modules/
+
+# IDE webstorm
+.idea/
+
+examples/
