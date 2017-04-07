@@ -13,9 +13,9 @@ const client = redis.createClient(config.redis.port, config.redis.host);
  * @param expire 失效时间，单位秒
  * @returns {Promise.<*>} 设置一个字符串类型的值，返回值：true
  */
-exports.setValue = (key,value,expire) => {
-    return new Promise((resolve,reject) => {
-        if(!key || !value) {
+exports.setValue = (key, value, expire) => {
+    return new Promise((resolve, reject) => {
+        if (!key || !value) {
             return reject(new Error('参数错误'));
         }
         return client.set(key, value, function (error) {
@@ -38,8 +38,8 @@ exports.setValue = (key,value,expire) => {
  * @returns {Promise.<*>}
  */
 exports.getValue = key => {
-    return new Promise((resolve,reject) => {
-        if(!key) {
+    return new Promise((resolve, reject) => {
+        if (!key) {
             return reject(new Error('参数错误'));
         }
         return client.get(key, function (error, result) {
@@ -58,7 +58,7 @@ exports.getValue = key => {
  * @param expire 失效时间，单位秒
  * @returns {Promise.<*>}
  */
-exports.setExpire = (key,expire) => {
+exports.setExpire = (key, expire) => {
     if (!key || !expire) {
         return Promise.reject(new Error('参数错误'));
     }

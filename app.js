@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const favicon = require('serve-favicon')
+const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const config = require('getconfig')
 const routes = require('./routes/index')
@@ -23,16 +24,15 @@ Object.defineProperty(global.CONSTANT, 'IMG_URL', {
 // app.set('view engine', 'ejs')
 
 // uncomment after placing your favicon in /public
-app.use(express.static(path.join(__dirname, 'public')))
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(log4js.connectLogger(Logger, {
   level: 'INFO',
   //       访问IP           请求方式        路由      处理状态        响应花费时间
   format: ':remote-addr  :method  :url  :status  :response-time' + 'ms'
 }))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 // 增加自定义的中间件
