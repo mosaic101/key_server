@@ -13,11 +13,6 @@ const middlewares = require('./middlewares')
 
 //将node原生Promise替换成bluebird
 global.Promise = require('bluebird')
-global.CONSTANT = {}
-Object.defineProperty(global.CONSTANT, 'IMG_URL', {
-  writeable: false,
-  value: config.img_url
-})
 
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'))
@@ -33,7 +28,7 @@ app.use(log4js.connectLogger(Logger, {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public')))
+// app.use(express.static(path.join(__dirname, 'public')))
 
 // 增加自定义的中间件
 app.use(middlewares.res)

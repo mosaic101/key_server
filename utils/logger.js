@@ -6,8 +6,7 @@ switch (env) {
     case 'development':
         {
             log4jsConfig = {
-                appenders: [
-                    {
+                appenders: [{
                         type: 'console'
                     },
                     {
@@ -62,7 +61,9 @@ switch (env) {
     default:
         throw new Error('没有对应的配置文件')
 }
-log4js.configure(log4jsConfig, { reloadSecs: 60 })
+log4js.configure(log4jsConfig, {
+    reloadSecs: 60
+})
 module.exports.log4js = log4js
 module.exports.Logger = function (name) {
     var logger = log4js.getLogger(name)
