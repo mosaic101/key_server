@@ -19,7 +19,7 @@ global.Promise = require('bluebird')
 // app.set('view engine', 'ejs')
 
 // uncomment after placing your favicon in /public
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(log4js.connectLogger(Logger, {
   level: 'INFO',
   //       访问IP           请求方式        路由      处理状态        响应花费时间
@@ -28,7 +28,7 @@ app.use(log4js.connectLogger(Logger, {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cookieParser())
-// app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 // 增加自定义的中间件
 app.use(middlewares.res)
@@ -60,7 +60,7 @@ app.use((err, req, res, next) => {
     err.status = 500
   }
   res.status = err.status || 500
-  //仅限开发时使用
+  //only be used in development
   if (app.get('env') === 'development') {
     res.json({
       tag: 'error',

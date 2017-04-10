@@ -1,6 +1,6 @@
 
 const router = require('express').Router()
-const auth = require('../utils/authorization')
+const auth = require('../middlewares/auth')
 
 router.get('/', (req,res) => {
   res.json('helloworld')
