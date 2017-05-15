@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   app.js                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jianjin.wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/15 14:35:39 by jianjin.wu        #+#    #+#             */
+/*   Updated: 2017/05/15 16:17:56 by jianjin.wu       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 const express = require('express')
 const path = require('path')
 const favicon = require('serve-favicon')
@@ -8,10 +20,8 @@ const routes = require('./routes/index')
 const Logger = require('./utils/logger').Logger('access')
 const log4js = require('./utils/logger').log4js
 const app = express()
-const middlewares = require('./middlewares')
 
 
-//将node原生Promise替换成bluebird
 global.Promise = require('bluebird')
 
 // view engine setup
@@ -26,12 +36,12 @@ app.use(log4js.connectLogger(Logger, {
   format: ':remote-addr  :method  :url  :status  :response-time' + 'ms'
 }))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-// 增加自定义的中间件
-app.use(middlewares.res)
+// res middleware
+app.use(require('./middlewares/res'))
 
 app.use('/', routes)
 
@@ -44,8 +54,8 @@ app.use((req, res, next) => {
 })
 
 //由于只有四个参数时被当做error handler 所以此处必须有四个参数。由于为终止代码，所以next未被使用
-/* eslint-disable no-unused-vars */
 // 统一的异常处理
+/* eslint-disable no-unused-vars */
 app.use((err, req, res, next) => {
   /* eslint-enable no-unused-vars */
   if (err) {
