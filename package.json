@@ -5,6 +5,10 @@
   "scripts": {
     "start": "nodemon ./bin/www"
   },
+  "main": "index.js",
+  "repository": "https://github.com/mosaic101/key_server.git",
+  "author": "jianjin.wu <mosaic101@foxmail.com>",
+  "license": "MIT",
   "out_file": "/home/logs/key_server.log",
   "error_file": "/home/logs/key_server.log",
   "merge_logs": true,
@@ -16,6 +20,7 @@
     "debug": "^2.6.6",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
+    "fundebug-nodejs": "^0.0.8",
     "getconfig": "^3.1.0",
     "ioredis": "^2.5.0",
     "joi": "^10.4.2",
@@ -23,6 +28,7 @@
     "lodash": "^4.17.4",
     "log4js": "^1.1.1",
     "moment": "^2.18.1",
+    "mysql": "^2.13.0",
     "norepeat": "^1.0.2",
     "redis": "^2.7.1",
     "request": "^2.81.0",

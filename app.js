@@ -6,7 +6,7 @@
 /*   By: jianjin.wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 14:35:39 by jianjin.wu        #+#    #+#             */
-/*   Updated: 2017/05/15 16:17:56 by jianjin.wu       ###   ########.fr       */
+/*   Updated: 2017/05/19 16:13:48 by jianjin.wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ const Logger = require('./utils/logger').Logger('access')
 const log4js = require('./utils/logger').log4js
 const app = express()
 
+const fundebug = require('fundebug-nodejs')
+fundebug.apikey = '39609f21a72aaa89f25bdd7db2fbe28ad4eabd88242d1be9d62d499f6242ee34'
 
 global.Promise = require('bluebird')
 
+fundebug.notify('Test', 'Hello Fundebug!')
 // view engine setup
 // app.set('views', path.join(__dirname, 'views'))
 // app.set('view engine', 'ejs')
