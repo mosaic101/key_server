@@ -6,21 +6,26 @@
 /*   By: jianjin.wu <mosaic101@foxmail.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 14:35:39 by jianjin.wu        #+#    #+#             */
-/*   Updated: 2017/05/19 16:13:48 by jianjin.wu       ###   ########.fr       */
+/*   Updated: 2017/05/22 17:49:07 by jianjin.wu       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+require('./globals')
+require('./setup-qcloud-sdk')
 
 const express = require('express')
 const path = require('path')
 const favicon = require('serve-favicon')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
-const config = require('getconfig')
+const config = require('getconfig') //TODO: 
 const routes = require('./routes/index')
 const Logger = require('./utils/logger').Logger('access')
 const log4js = require('./utils/logger').log4js
+
 const app = express()
 
+// TODO: 
 const fundebug = require('fundebug-nodejs')
 fundebug.apikey = '39609f21a72aaa89f25bdd7db2fbe28ad4eabd88242d1be9d62d499f6242ee34'
 
@@ -34,8 +39,7 @@ fundebug.notify('Test', 'Hello Fundebug!')
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(log4js.connectLogger(Logger, {
-  level: 'INFO',
-  //       访问IP           请求方式        路由      处理状态        响应花费时间
+  level: 'INFO',            
   format: ':remote-addr  :method  :url  :status  :response-time' + 'ms'
 }))
 app.use(bodyParser.json())

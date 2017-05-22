@@ -1,0 +1,11 @@
+{
+    "name": "dropBox",
+    "script": "bin/www",
+    "cwd": "./",
+    "exec_mode": "fork",
+    "watch": true,
+    "env": {
+        "NODE_ENV": "production",
+        "DEBUG_SDK": "yes"
+    }
+}

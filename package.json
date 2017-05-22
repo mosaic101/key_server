@@ -30,6 +30,7 @@
     "moment": "^2.18.1",
     "mysql": "^2.13.0",
     "norepeat": "^1.0.2",
+    "qcloud-weapp-server-sdk": "^0.8.2",
     "redis": "^2.7.1",
     "request": "^2.81.0",
     "request-json": "^0.6.2",
